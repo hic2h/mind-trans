@@ -1,0 +1,49 @@
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 80px;
+  background-image: url("../../../assets/images/logo-mindtrans.png");
+  background-repeat: repeat-y;
+  //background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 16px;
+}
+
+.emptyLogo {
+  height: 80px;
+  margin-bottom: 16px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+nz-content {
+  margin: 24px 16px 0;
+  overflow: initial;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  text-align: center;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+.topbar {
+  text-align: end;
+  padding-right: 16px;
+}

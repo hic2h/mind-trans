@@ -1,0 +1,5 @@
+<h1 style="margin-bottom: 10px;">Edit Driver</h1>
+<app-drivers-edit-form
+  (save)="saveDriver($event)"
+  [driver]="driver$ | async"
+></app-drivers-edit-form>

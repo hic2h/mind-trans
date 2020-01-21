@@ -1,0 +1,68 @@
+<form
+  nz-form
+  [formGroup]="editDriverProfile"
+  nzLayout="vertical"
+  (ngSubmit)="submitForm(editDriverProfile.value)"
+>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email"
+      >E-mail</nz-form-label
+    >
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="The input is not valid E-mail!"
+    >
+      <input nz-input formControlName="email" id="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <div formGroupName="profile">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstName"
+        >First Name</nz-form-label
+      >
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        nzErrorTip="The input is not valid name"
+      >
+        <input nz-input formControlName="firstName" id="firstName" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastName"
+        >Last Name</nz-form-label
+      >
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        nzErrorTip="The input is not valid name"
+      >
+        <input nz-input formControlName="lastName" id="lastName" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="avatar"
+        >Avatar Url</nz-form-label
+      >
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        nzErrorTip="The input is not valid name"
+      >
+        <input nz-input formControlName="avatar" id="avatar" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item *ngIf="uiStore.uiState | async as uiState">
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <button nz-button nzType="primary" [nzLoading]="uiState.loading">
+          {{ uiState.loading ? uiState.loadingMessage : "Submit" }}
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+<div class="driver-page">
+  <button
+    nz-button
+    nzSize="large"
+    nzType="primary"
+    class="add-driver-btn"
+    [routerLink]="'/drivers/new'"
+  >
+    Add Driver
+  </button>
+  <app-drivers-list [drivers]="driversStore.drivers | async"></app-drivers-list>
+</div>

@@ -2,5 +2,306 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "mindtransWeb": {
+      "root": "projects/mindtransWeb/",
+      "sourceRoot": "projects/mindtransWeb/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mindtransWeb",
+            "index": "projects/mindtransWeb/src/index.html",
+            "main": "projects/mindtransWeb/src/main.ts",
+            "polyfills": "projects/mindtransWeb/src/polyfills.ts",
+            "tsConfig": "projects/mindtransWeb/tsconfig.app.json",
+            "assets": [
+              "projects/mindtransWeb/src/favicon.ico",
+              "projects/mindtransWeb/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "projects/mindtransWeb/src/styles.scss"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mindtransWeb/src/environments/environment.ts",
+                  "with": "projects/mindtransWeb/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mindtransWeb:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mindtransWeb:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mindtransWeb:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mindtransWeb/src/test.ts",
+            "polyfills": "projects/mindtransWeb/src/polyfills.ts",
+            "tsConfig": "projects/mindtransWeb/tsconfig.spec.json",
+            "karmaConfig": "projects/mindtransWeb/karma.conf.js",
+            "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "projects/mindtransWeb/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/mindtransWeb/src/favicon.ico",
+              "projects/mindtransWeb/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mindtransWeb/tsconfig.app.json",
+              "projects/mindtransWeb/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "mtDataServices": {
+      "root": "projects/mt-data-services",
+      "sourceRoot": "projects/mt-data-services/src",
+      "projectType": "library",
+      "prefix": "data",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mt-data-services/tsconfig.lib.json",
+            "project": "projects/mt-data-services/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mt-data-services/src/test.ts",
+            "tsConfig": "projects/mt-data-services/tsconfig.spec.json",
+            "karmaConfig": "projects/mt-data-services/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mt-data-services/tsconfig.lib.json",
+              "projects/mt-data-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "mindTransMobile": {
+      "root": "projects/mindTransMobile",
+      "sourceRoot": "projects/mindTransMobile/src",
+      "projectType": "application",
+      "prefix": "mo",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "www",
+            "index": "projects/mindTransMobile/src/index.html",
+            "main": "projects/mindTransMobile/src/main.ts",
+            "polyfills": "projects/mindTransMobile/src/polyfills.ts",
+            "tsConfig": "projects/mindTransMobile/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/mindTransMobile/src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              {
+                "input": "projects/mindTransMobile/src/theme/variables.scss"
+              },
+              {
+                "input": "projects/mindTransMobile/src/global.scss"
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "ci": {
+              "progress": false
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mindTransMobile:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mindTransMobile:build:production"
+            },
+            "ci": {
+              "progress": false
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mindTransMobile:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mindTransMobile/src/test.ts",
+            "polyfills": "projects/mindTransMobile/src/polyfills.ts",
+            "tsConfig": "projects/mindTransMobile/tsconfig.spec.json",
+            "karmaConfig": "projects/mindTransMobile/karma.conf.js",
+            "styles": [],
+            "scripts": [],
+            "assets": [
+              {
+                "glob": "projects/mindTransMobile/favicon.ico",
+                "input": "projects/mindTransMobile/src/",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/mindTransMobile/src/assets",
+                "output": "projects/mindTransMobile//assets"
+              }
+            ]
+          },
+          "configurations": {
+            "ci": {
+              "progress": false,
+              "watch": false
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mindTransMobile/tsconfig.app.json",
+              "projects/mindTransMobile/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "mindTransMobile:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mindTransMobile:build:production"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "mindTransMobile:ionic-cordova-build",
+            "devServerTarget": "mindTransMobile:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "mindTransMobile:ionic-cordova-build:production",
+              "devServerTarget": "mindTransMobile:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "mindtransWeb",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

@@ -1,0 +1,38 @@
+<div *ngIf="uiStore.uiState | async as uiState">
+  <nz-spin
+    *ngIf="uiState.loading"
+    class="drivers-loading"
+    nzSimple
+    [nzSpinning]="uiState.loading"
+    [nzTip]="uiState.loadingMessage"
+  ></nz-spin>
+
+  <nz-table #driversTable [nzData]="drivers" *ngIf="!uiState.loading">
+    <thead>
+      <tr>
+        <th>Avatar</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let driver of driversTable.data">
+        <td>
+          <nz-avatar [nzSize]="64" [nzSrc]="driver?.profile.avatar"></nz-avatar>
+        </td>
+        <td>{{ driver?.profile.firstName }} {{ driver?.profile.lastName }}</td>
+        <td>{{ driver?.email }}</td>
+        <td>{{ driver?.status }}</td>
+        <td>
+          <a [routerLink]="['edit/', driver.id]">View profile</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a>Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<!--(uiStore.uiState | async).loading-->

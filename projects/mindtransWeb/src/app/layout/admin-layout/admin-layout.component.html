@@ -1,0 +1,43 @@
+<nz-layout style="min-height: 100%;">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed">
+    <div [class]="isCollapsed ? 'emptyLogo' : 'logo'"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item [routerLink]="['/dashboard']">
+        <i nz-icon nzType="line-chart" nzTheme="outline"></i>
+        <span i18n>Dashboard</span>
+      </li>
+      <li nz-menu-item nzSelected [routerLink]="['/missions']">
+        <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
+        <span i18n>Missions</span>
+      </li>
+      <li nz-menu-item [routerLink]="['/drivers']">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span i18n>Drivers</span>
+      </li>
+      <li nz-menu-item [routerLink]="['/cars']">
+        <i nz-icon nzType="car" nzTheme="outline"></i>
+        <span i18n>Cars</span>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
+        <span i18n>Missions</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout class="layout">
+    <nz-header>
+      <ul nz-menu nzTheme="dark" nzMode="horizontal" class="topbar">
+        <li nz-menu-item>
+          <nz-avatar nzText="U" style="color:#f56a00; background-color:#fde3cf;"></nz-avatar>
+        </li>
+        <i nz-icon nzType="logout"></i>
+      </ul>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>MindTrans ©2020 By Mindeed</nz-footer>
+  </nz-layout>
+</nz-layout>

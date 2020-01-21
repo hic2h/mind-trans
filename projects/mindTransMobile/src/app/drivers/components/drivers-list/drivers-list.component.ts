@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { Driver, UiStore } from "mt-data-services";
 
 @Component({
   selector: "mo-drivers-list",
@@ -6,7 +7,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./drivers-list.component.scss"]
 })
 export class DriversListComponent implements OnInit {
-  constructor() {}
+  @Input() drivers: Driver[];
+  constructor(public uiStore: UiStore) {}
 
   ngOnInit() {}
 }
